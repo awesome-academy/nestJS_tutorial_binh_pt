@@ -1,0 +1,6 @@
+{
+  "delete": {
+    "failed": "Đã có lỗi xảy ra trong quá trình xóa",
+    "success": "Nhiệm vụ {id} đã xóa thành công!"
+  }
+}
