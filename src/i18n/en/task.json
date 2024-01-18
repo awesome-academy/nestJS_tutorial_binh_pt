@@ -2,5 +2,13 @@
   "delete": {
     "failed": "Something went wrong when delete task",
     "success": "Task {id} was deleted!"
+  },
+  "validate": {
+    "id": {
+      "not_found": "Task with ID {id} not found"
+    },
+    "status": {
+      "invalid_value": "{value} is an invalid status"
+    }
   }
 }

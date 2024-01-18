@@ -2,5 +2,13 @@
   "delete": {
     "failed": "Đã có lỗi xảy ra trong quá trình xóa",
     "success": "Nhiệm vụ {id} đã xóa thành công!"
+  },
+  "validate": {
+    "id": {
+      "not_found": "Không tìm thấy nhiệm vụ có ID: {id}"
+    },
+    "status": {
+      "invalid_value": "{value} là trạng thái không hợp lệ"
+    }
   }
 }
