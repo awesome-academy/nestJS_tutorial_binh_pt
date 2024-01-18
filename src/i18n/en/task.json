@@ -1,0 +1,6 @@
+{
+  "delete": {
+    "failed": "Something went wrong when delete task",
+    "success": "Task {id} was deleted!"
+  }
+}
