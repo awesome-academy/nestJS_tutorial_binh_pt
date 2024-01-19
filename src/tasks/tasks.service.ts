@@ -1,12 +1,15 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Task, TaskStatus } from './task.model';
-import { CreateTaskDto } from './dto/create-task.dto.ts/create-task.dto';
+import { CreateTaskDto } from './dto/create-task.dto/create-task.dto';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto/get-tasks-filter.dto';
+import { I18nContext, I18nService } from 'nestjs-i18n';
 
 @Injectable()
 export class TasksService {
+  constructor(private readonly i18n: I18nService) {}
+
   private tasks: Task[] = [];
 
   getAllTasks(): Task[] {
@@ -28,7 +31,13 @@ export class TasksService {
   }
 
   getTaskById(id: string): Task {
-    return this.tasks.find((task) => task.id === id);
+    const task = this.tasks.find((task) => task.id === id);
+
+    if (!task) {
+      throw new NotFoundException(this.i18n.t("task.validate.id.not_found", { lang: I18nContext.current().lang, args: { id: id } }));
+    }
+
+    return task;
   }
 
   deleteTaskById(id: string): Task {
