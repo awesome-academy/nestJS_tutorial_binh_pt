@@ -1,6 +1,7 @@
 {
   "hello": "Xin chào thế giới!!!",
   "validate_error": "Lỗi validate",
+  "invalid_token": "Token không hợp lệ",
   "errors": {
     "positive_id": "Id phải là số dương"
   }
