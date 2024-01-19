@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TasksModule } from './tasks/tasks.module';
 import { AcceptLanguageResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
 import * as path from 'path';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ORM_CONFIG } from './app.constant';
 
 @Module({
   imports: [
@@ -20,6 +22,7 @@ import * as path from 'path';
         AcceptLanguageResolver,
       ],
     }),
+    TypeOrmModule.forRoot(ORM_CONFIG),
     TasksModule
   ],
   controllers: [AppController],

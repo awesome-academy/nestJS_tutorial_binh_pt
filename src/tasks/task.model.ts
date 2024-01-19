@@ -1,8 +1,8 @@
-export interface Task {
-  id: string; // unique identifier for the task
+export interface ITask {
+  id?: string; // unique identifier for the task
   title: string; // title of task
   description: string; // description of task
-  status: TaskStatus; // status of task
+  isActive: boolean; // status of task
  }
 
  // Take advantage of typescript enumeration as a set of statuses
