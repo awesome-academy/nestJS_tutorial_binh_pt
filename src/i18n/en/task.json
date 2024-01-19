@@ -3,6 +3,14 @@
     "failed": "Something went wrong when delete task",
     "success": "Task {id} was deleted!"
   },
+  "update": {
+    "failed": "Something went wrong when update task",
+    "success": "Task {id} was updated!"
+  },
+  "create": {
+    "failed": "Something went wrong when create task",
+    "success": "Task was created!"
+  },
   "validate": {
     "id": {
       "not_found": "Task with ID {id} not found"

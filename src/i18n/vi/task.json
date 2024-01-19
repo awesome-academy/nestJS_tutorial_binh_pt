@@ -3,6 +3,14 @@
     "failed": "Đã có lỗi xảy ra trong quá trình xóa",
     "success": "Nhiệm vụ {id} đã xóa thành công!"
   },
+  "update": {
+    "failed": "Đã có lỗi xảy ra trong quá trình cập nhật",
+    "success": "Nhiệm vụ {id} đã cập nhật thành công!"
+  },
+  "create": {
+    "failed": "Đã có lỗi xảy ra trong quá trình tạo",
+    "success": "Nhiệm vụ đã được tạo thành công!"
+  },
   "validate": {
     "id": {
       "not_found": "Không tìm thấy nhiệm vụ có ID: {id}"

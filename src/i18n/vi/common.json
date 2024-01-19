@@ -1,3 +1,7 @@
 {
-  "hello": "Xin chào thế giới!!!"
+  "hello": "Xin chào thế giới!!!",
+  "validate_error": "Lỗi validate",
+  "errors": {
+    "positive_id": "Id phải là số dương"
+  }
 }
