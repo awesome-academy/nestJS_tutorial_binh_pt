@@ -4,6 +4,7 @@ import { I18nContext, I18nService } from 'nestjs-i18n';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from './entities/task.entity';
 import { Repository } from 'typeorm';
+import { User } from 'src/auth/entities/user.entity';
 
 @Injectable()
 export class TasksService {
@@ -17,14 +18,14 @@ export class TasksService {
     return this.tasksRepository.find();
   }
 
-  async createTask(taskParams: CreateTaskDto): Promise<Task> {
+  async createTask(taskParams: CreateTaskDto, user: User): Promise<Task> {
     const { title, description } = taskParams;
     const permitTaskParams = {
       title,
       description,
       isActive: false,
+      user,
     };
-
     const task = await this.tasksRepository.create(permitTaskParams);
 
     try {
@@ -37,8 +38,8 @@ export class TasksService {
     }
   }
 
-  async getTaskById(id: number): Promise<Task> {
-    const task = await this.tasksRepository.findOneBy({id});
+  async getTaskById(id: number, user: User): Promise<Task> {
+    const task = await this.tasksRepository.findOneBy({id, user});
 
     if (!task) {
       throw new NotFoundException({
@@ -50,13 +51,15 @@ export class TasksService {
     return task;
   }
 
-  async deleteTaskById(id: string) {
-    const result = await this.tasksRepository.delete(id);
+  async deleteTaskById(id: string, user: User) {
+    const task = await this.getTaskById(+id, user)
+    const result = await this.tasksRepository.delete(task);
     return result.affected;
   }
 
-  async updateTaskStatus(id: string, status: boolean) {
-    const result =  await this.tasksRepository.update(id, {isActive: !!status});
+  async updateTaskStatus(id: string, status: boolean, user: User) {
+    const task = await this.getTaskById(+id, user)
+    const result =  await this.tasksRepository.update(task, {isActive: !!status});
     return result.affected;
   }
 }
