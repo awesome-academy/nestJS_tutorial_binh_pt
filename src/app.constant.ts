@@ -1,4 +1,4 @@
-import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import 'dotenv/config';
 
 export const ORM_CONFIG: TypeOrmModuleOptions = {
@@ -18,4 +18,4 @@ export const JWT_CONFIG = {
   signOptions: {
     expiresIn: 3600,
   },
-}
+};
