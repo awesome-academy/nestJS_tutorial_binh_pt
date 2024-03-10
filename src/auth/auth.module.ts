@@ -16,6 +16,6 @@ import { JWT_CONFIG } from 'src/app.constant';
   ],
   providers: [AuthService, JwtStrategy],
   exports: [TypeOrmModule],
-  controllers: [AuthController]
+  controllers: [AuthController],
 })
 export class AuthModule {}

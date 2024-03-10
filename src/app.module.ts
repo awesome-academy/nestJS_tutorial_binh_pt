@@ -18,14 +18,11 @@ import { AuthModule } from './auth/auth.module';
           watch: true,
         },
       }),
-      resolvers: [
-        new QueryResolver(['lang']),
-        AcceptLanguageResolver,
-      ],
+      resolvers: [new QueryResolver(['lang']), AcceptLanguageResolver],
     }),
     TypeOrmModule.forRoot(ORM_CONFIG),
     TasksModule,
-    AuthModule
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,0 +1,19 @@
+workspace: true
+
+stages:
+- build
+- test
+
+jobs:
+  build:
+    stage: build
+    image: node:18-alpine
+    script:
+    - npm install
+    - npm run build
+
+  test:
+    stage: test
+    image: node:18-alpine
+    script:
+    - npm run lint

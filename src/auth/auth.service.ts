@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { User } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -21,14 +25,17 @@ export class AuthService {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     try {
-      const result = await this.usersRepository.save({username, password: hashedPassword});
-      console.log("result", result)
-      return result
+      const result = await this.usersRepository.save({
+        username,
+        password: hashedPassword,
+      });
+      console.log('result', result);
+      return result;
     } catch (error) {
       throw new BadRequestException({
-        message: I18nContext.current().t("auth.signup.failed"),
+        message: I18nContext.current().t('auth.signup.failed'),
         data: {},
-      })
+      });
     }
   }
 
@@ -42,7 +49,9 @@ export class AuthService {
       return { accessToken };
     } else {
       throw new UnauthorizedException({
-        message: I18nContext.current().t("auth.validate.invalid_username_password"),
+        message: I18nContext.current().t(
+          'auth.validate.invalid_username_password',
+        ),
         data: {},
       });
     }
