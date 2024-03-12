@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable, ValidationPipe } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  ValidationPipe,
+} from '@nestjs/common';
 import { I18nContext } from 'nestjs-i18n';
 
 @Injectable()
@@ -14,7 +18,7 @@ export class CustomValidationRes extends ValidationPipe {
 
         return new BadRequestException({
           statusCode: 400,
-          message: I18nContext.current().t("common.validate_error"),
+          message: I18nContext.current().t('common.validate_error'),
           errors: formattedErrors,
         });
       },

@@ -19,8 +19,14 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload): Promise<User> {
-    const user: User = await this.usersRepository.findOneBy({ username: payload.username });
-    if (!user) throw new HttpException(I18nContext.current().t("common.invalid_token"), HttpStatus.UNAUTHORIZED);
+    const user: User = await this.usersRepository.findOneBy({
+      username: payload.username,
+    });
+    if (!user)
+      throw new HttpException(
+        I18nContext.current().t('common.invalid_token'),
+        HttpStatus.UNAUTHORIZED,
+      );
     return user;
   }
 }
